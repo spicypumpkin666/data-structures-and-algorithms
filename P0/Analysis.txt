@@ -1,0 +1,16 @@
+Worst Case Big-O Notation
+
+Task 0: O(1)
+Task 0 is O(1) complexity because we're accessing the first and last calls from the data by index.
+
+Task 1: O(2n)
+Task 1 is O(n) complexity because the time increases linearly with two for loops.
+
+Task 2: O(n)
+Task 2 is O(n) complexity because there is a single for loop.
+
+Task 3: O(3 log n)
+Task 3 is O(3 log n) complexity because there are 3 for loops that we're running the data through and sorted is O(n log n) complexity.
+
+Task 4: O(2 log n)
+Task 4 is O(2 log n) complexity because there are 2 for loops that we're running the data through plus, again, sorted().
