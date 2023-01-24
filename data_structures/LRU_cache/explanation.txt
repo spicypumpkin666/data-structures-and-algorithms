@@ -1,0 +1,7 @@
+For this problem, we create a list to store the most recent interactions according to their
+keys, and a map to store the key value pairs.
+When we add a key:value to the cache, we first check that it doesn't already exist, then
+add it to the map.
+For every interaction we first check the size of the cache list. If it's less than the capacity,
+we append the key to the list. If it's more than the capacity, we remove the item from the
+cache's 0 index before appending, and also remove that key:value from the mapping.

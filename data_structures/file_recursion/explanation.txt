@@ -1,0 +1,4 @@
+Using os, we check which items in the current dir are files. We add those to the list of files
+we're returning, and then recursively walk through the sub directories within the current dir
+to find more files.
+The run time is O(n) where n is the total number of files / dirs in the path.

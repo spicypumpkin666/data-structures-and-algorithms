@@ -1,0 +1,4 @@
+We treat blocks as nodes, and create the linked list, Chain. To create the chain we append
+nodes, or blocks, onto the chain. The class takes care of timestamps and hashing, the only
+thing we pass is the value.
+The runtime of the creation of this chain is O(n) where n is the number of blocks.

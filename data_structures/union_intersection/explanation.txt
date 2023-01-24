@@ -1,0 +1,10 @@
+To create the union, we walk through both linked lists completely and add every value to an
+array to store. Then we sort that array and call set() which ensures each value appears only once,
+and then, for each value in that updated set, we create a new linked list and return that.
+The runtime complexity is O(3n log(n))
+
+To create the intersection, we again run through each linked list but this time append their values
+to two separate arrays. Then we create a third array that is only the values that appear in both the
+first and second arrays. We perform the same actions on that final array- set and sort- and then
+create and return a final linked list of those values only.
+The runtime complexity is O(3n log(n))

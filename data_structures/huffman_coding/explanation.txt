@@ -1,0 +1,4 @@
+To encode the string for this problem, we loop through each element we're given and 'count' the number of times we
+see any given character, and store these in a dictionary. Once we've gone through everything, we compress it.
+To decode, we expand on those values we've stored in the same way.
+The runtime complexity is O(2n).
