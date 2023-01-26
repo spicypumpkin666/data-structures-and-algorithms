@@ -26,7 +26,7 @@ def huffman_encoding(data):
 
 
 def huffman_decoding(data,tree):
-    if data is None:
+    if tree is None:
         return ("No data to decode")
 
     vals = {}

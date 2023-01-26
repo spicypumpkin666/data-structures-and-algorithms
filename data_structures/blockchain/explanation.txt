@@ -1,4 +1,6 @@
-We treat blocks as nodes, and create the linked list, Chain. To create the chain we append
-nodes, or blocks, onto the chain. The class takes care of timestamps and hashing, the only
-thing we pass is the value.
+Each block contains data, a timestamp, the previous block's hash, and then it's own hash that is calculated using hashlib
+library's sha256() function.
+Each block is then connected to a node, and each node points, again, to the previous node (rather than, as with a traditional
+linked list, to the next node). Each of these nodes are linked together using the Blockchain class.
+
 The runtime of the creation of this chain is O(n) where n is the number of blocks.

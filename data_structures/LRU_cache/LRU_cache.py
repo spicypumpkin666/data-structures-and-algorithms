@@ -1,48 +1,66 @@
+class Node:
+    
+    def __init__(self, key):
+        self.key = key
+        self.prev = None
+        self.next = None
+
+
 class LRU_Cache(object):
 
     def __init__(self, capacity):
-        # Initialize class variables
+        self.head = None
+        self.last = None
         self.capacity = capacity
         self.size = 0
-        self.cache = list()
         self.cache_map = {}
 
-    def is_empty(self):
-        return self.size == 0
+    def enqueue(self, key):
+        if self.size >= self.capacity:
+            self.dequeue(self.head)
 
-    def check_size(self):
-        if self.size == self.capacity:
-            self.remove_from_cache()
+        node = Node(key)
+
+        if self.head is None:
+            self.head = node
+            self.last = node
+        else:
+            node.prev = self.head
+            self.head.next = node
+            self.head = node
+        self.size += 1
+
+    def dequeue(self, node):
+        if self.head is None:
+            return
+
+        if node.prev:
+            node.prev.next = node.next
+        if node.next:
+            node.next.prev = node.prev
+
+        if self.last == node:
+            self.last = node.next
+            self.last.prev = None
+        self.size -= 1
+        return node
 
     def get(self, key):
         # Retrieve item from provided key. Return -1 if nonexistent.
         if key in self.cache_map.keys():
-            self.check_size()
-            self.cache.append(key)
-            self.size += 1
+            self.enqueue(key)
             return self.cache_map[key]
         return -1
 
     def set(self, key, value):
-        # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item.
-        if self.is_empty():
-            self.cache.append(key)
-            self.cache_map.update({key: value})
-            self.size += 1
-
-        self.check_size()
-
+        # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item
+        if self.size >= self.capacity:
+            self.dequeue(self.head)
         if key in self.cache_map.keys():
-            return
-        else:
             self.cache_map[key] = value
-            self.cache.append(key)
-            self.size += 1
-
-    def remove_from_cache(self):
-        key = self.cache.pop(0)
-        self.cache_map.pop(key)
-        self.size -= 1
+        else:
+            self.cache_map.update({key: value})
+        self.enqueue(key)
 
 
 our_cache = LRU_Cache(5)
