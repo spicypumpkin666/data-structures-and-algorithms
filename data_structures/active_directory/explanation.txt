@@ -1,4 +1,5 @@
-For this problem we check first if a user is in the current group, or the current name. If yes,
-we return true, if not, then we call the function again for every subgroup that we find in
-the current level of the tree.
-The runtime is O(n x levels of the groups)
+The active directory problem is another tree problem. I used depth first search again. The method is to first search through
+the users in the first group, and if the user is not there, to search through users in the next level of groups, until
+you find the user, using recursion.
+
+The runtime is O(n * number of groups)

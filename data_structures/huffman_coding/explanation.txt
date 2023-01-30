@@ -1,4 +1,7 @@
 To encode the string for this problem, we loop through each element we're given and 'count' the number of times we
-see any given character, and store these in a dictionary. Once we've gone through everything, we compress it.
+see any given character, and store these in a dictionary. We can use a heap to store the occurrences
+of an element in the string.
+Once we've gone through everything, we compress it.
 To decode, we expand on those values we've stored in the same way.
-The runtime complexity is O(2n).
+The runtime complexity for both encoding and decding the data is O(n^2), where n is the number
+of characters, where we loop through twice to first count and then store the occurrences.

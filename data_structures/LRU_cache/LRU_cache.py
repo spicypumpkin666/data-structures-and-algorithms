@@ -1,7 +1,8 @@
 class Node:
     
-    def __init__(self, key):
+    def __init__(self, key, value):
         self.key = key
+        self.value = value
         self.prev = None
         self.next = None
 
@@ -15,12 +16,7 @@ class LRU_Cache(object):
         self.size = 0
         self.cache_map = {}
 
-    def enqueue(self, key):
-        if self.size >= self.capacity:
-            self.dequeue(self.head)
-
-        node = Node(key)
-
+    def enqueue(self, node):
         if self.head is None:
             self.head = node
             self.last = node
@@ -39,28 +35,46 @@ class LRU_Cache(object):
         if node.next:
             node.next.prev = node.prev
 
+        if not node.next and not node.prev:
+            self.head = None
+            self.last = None
+
         if self.last == node:
             self.last = node.next
             self.last.prev = None
+
         self.size -= 1
         return node
 
     def get(self, key):
         # Retrieve item from provided key. Return -1 if nonexistent.
-        if key in self.cache_map.keys():
-            self.enqueue(key)
-            return self.cache_map[key]
-        return -1
+        if key not in self.cache_map.keys():
+            return -1
+
+        node = self.cache_map[key]
+
+        if self.head == node:
+            return node.value
+        self.dequeue(node)
+        self.enqueue(node)
+
+        return node.value
 
     def set(self, key, value):
         # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item
-        if self.size >= self.capacity:
-            self.dequeue(self.head)
         if key in self.cache_map.keys():
-            self.cache_map[key] = value
+            node = self.cache_map[key]
+            node.value = value
+            if self.head != node:
+                self.dequeue(node)
+                self.enqueue(node)
         else:
-            self.cache_map.update({key: value})
-        self.enqueue(key)
+            new_node = Node(key, value)
+            if self.size >= self.capacity:
+                self.cache_map.pop(self.last.key)
+                self.dequeue(self.last)
+            self.enqueue(new_node)
+            self.cache_map[key] = new_node
 
 
 our_cache = LRU_Cache(5)
@@ -72,13 +86,15 @@ our_cache.set(4, 4)
 
 
 print(f"get 1: {our_cache.get(1)}")      # returns 1
-print(f"get 1: {our_cache.get(2)}")       # returns 2
-print(f"get 1: {our_cache.get(9)}")      # returns -1 because 9 is not present in the cache
+print(f"get 2: {our_cache.get(2)}")
+print(f"get 2: {our_cache.get(4)}")       # returns 2, 4
+print(f"get 9 returns -1: {our_cache.get(9)}")      # returns -1 because 9 is not present in the cache
 
 our_cache.set(5, 5)
 our_cache.set(6, 6)
+our_cache.set(7, 7)
 
-print(f"get 1: {our_cache.get(3)}") # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
+print(f"get 3 returns -1: {our_cache.get(3)}") # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
 
 # Add your own test cases: include at least three test cases
 # and two of them must include edge cases, such as null, empty or very large values

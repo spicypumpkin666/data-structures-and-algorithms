@@ -43,7 +43,9 @@ class Blockchain:
 
     def add_block(self, data):
         self.index += 1
-        new_block = Block(data=data, previous_hash=None)
+
+        node = self.head
+        new_block = Block(data=data, previous_hash=node.block.hash)
         new_node = Node(self.index, new_block, self.head)
         self.head = new_node
 

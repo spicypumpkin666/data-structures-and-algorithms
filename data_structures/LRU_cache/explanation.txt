@@ -1,7 +1,9 @@
-The cache I use here is a linked list with nodes containing the keys of each value. I also have a cache_map that is a
-map of key:value pairs that I use to store the values I'm setting. When I need to get a value, if that key exists in
-the map, I add the key to the cache, and return the value. When adding the key to the cache I check that the size has not
-exceeded the capacity yet- if it has, I remove the head of the cache (head being, the oldest added element).
+I decided to use a dictionary to retrieve the cache data, so that the time complexity would remain
+O(1) (using the key: value pairs to grab the value reduces the complexity). I also used a double
+linked list, with nodes pointing both forward and backward, to enqueue and dequeue the nodes.
+I also store the linked list's head and last nodes, for more simply accessing them.
 
-The time complexity should be O(n), because while I use a linked list I never loop through it, and each value in the map
-is retrieved by using the key.
+Time complexity is O(1) because accessing values in a dict is O(1), as is getting the stored
+values of the first and last elements in a linked list.
+Setting the data is O(n) where n is the number of data points I want to set.
+Getting the data is, again, O(1), using the dictionary.

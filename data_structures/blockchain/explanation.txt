@@ -1,6 +1,8 @@
-Each block contains data, a timestamp, the previous block's hash, and then it's own hash that is calculated using hashlib
+To create a blockchain I created a linked list, that contained blocks.Each block contains data, a timestamp,
+the previous block's hash, and then it's own hash that is calculated using hashlib
 library's sha256() function.
-Each block is then connected to a node, and each node points, again, to the previous node (rather than, as with a traditional
-linked list, to the next node). Each of these nodes are linked together using the Blockchain class.
+Each block is then connected to a node in the linked list, and each node points, again, to the previous node
+(rather than, as with a traditional linked list, to the next node). Each of these nodes are linked together
+using the Blockchain class.
 
 The runtime of the creation of this chain is O(n) where n is the number of blocks.
