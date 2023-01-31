@@ -7,3 +7,5 @@ Time complexity is O(1) because accessing values in a dict is O(1), as is gettin
 values of the first and last elements in a linked list.
 Setting the data is O(n) where n is the number of data points I want to set.
 Getting the data is, again, O(1), using the dictionary.
+
+The space complexity is O(n) for set, and O(1) for get. 

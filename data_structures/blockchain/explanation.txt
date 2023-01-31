@@ -6,3 +6,5 @@ Each block is then connected to a node in the linked list, and each node points,
 using the Blockchain class.
 
 The runtime of the creation of this chain is O(n) where n is the number of blocks.
+The space complexity is O(n) where n is the size of the data, since I'm generating a hash of all the data that is
+attributed to each block.

@@ -2,4 +2,5 @@ The active directory problem is another tree problem. I used depth first search 
 the users in the first group, and if the user is not there, to search through users in the next level of groups, until
 you find the user, using recursion.
 
-The runtime is O(n * number of groups)
+The runtime is O(n * number of groups).
+The space complexity is O(b*m) where m is the longest path, and b is the number of sibling nodes along the path.

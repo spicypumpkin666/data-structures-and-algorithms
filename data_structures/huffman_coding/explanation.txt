@@ -1,7 +1,12 @@
 To encode the string for this problem, we loop through each element we're given and 'count' the number of times we
 see any given character, and store these in a dictionary. We can use a heap to store the occurrences
 of an element in the string.
-Once we've gone through everything, we compress it.
+The time complexity of huffman_encoding is O(nlog(n)), where n is the number of unique characters in the input data
+
 To decode, we expand on those values we've stored in the same way.
 The runtime complexity for both encoding and decding the data is O(n^2), where n is the number
 of characters, where we loop through twice to first count and then store the occurrences.
+The time complexity of huffman_decoding is O(n), where n is the length of the input data.
+
+The space complexity is O(n*log(n)) for encoding.
+The space complexity is O(n) for decoding,

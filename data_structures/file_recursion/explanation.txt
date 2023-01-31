@@ -4,3 +4,4 @@ we're returning, and then recursively walk through the sub directories within th
 to find more files.
 The run time is O(n*number_of_paths) where n is the total number of files / dirs in the path,
 times the number of paths I need to traverse.
+The space complexity is O(sibling_nodes * longest_path + num_file_nodes * path_length).

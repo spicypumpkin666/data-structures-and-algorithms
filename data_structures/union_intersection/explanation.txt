@@ -7,4 +7,7 @@ To create the intersection, we again run through each linked list but this time 
 to two separate arrays. Then we create a third array that is only the values that appear in both the
 first and second arrays. We perform the same actions on that final array- set and sort- and then
 create and return a final linked list of those values only.
-The runtime complexity is O(3n log(n))
+The time complexity of the intersection method is O(n) where n is the number of elements in the larger linked list, because
+we have to loop through the elements in both linked lists to check which values exist in both.
+
+The space complexity for both is O(n) where n is the size of the input of both lists added together (list1 + list2).
