@@ -57,10 +57,18 @@ def rearrange_digits(input_list):
 def test_function(test_case):
     output = rearrange_digits(test_case[0])
     solution = test_case[1]
+    print(output)
     if sum(output) == sum(solution):
         print("Pass")
     else:
         print("Fail")
 
+#test one
 test_function([[1, 2, 3, 4, 5], [542, 31]])
 test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
+
+#test two
+test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
+
+#test three
+test_function([[100], [-1]])
